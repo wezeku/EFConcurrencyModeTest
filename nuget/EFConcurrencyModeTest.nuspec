@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>@project@</id>
+    <version>@build.number@</version>
+    <authors>@authors@</authors>
+    <owners>@authors@</owners>
+    <licenseUrl>http://github.com/wezeku/EFConcurrencyModeTest/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/wezeku/EFConcurrencyModeTest</projectUrl>
+    <iconUrl>https://raw.github.com/fsharp/EFConcurrencyModeTest/master/nuget/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>@summary@</summary>
+    <description>@description@</description>
+    <releaseNotes>@releaseNotes@</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>@tags@</tags>
+    <dependencies />
+
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Xml" targetFramework="net40" />
+      <frameworkAssembly assemblyName="System.Xml.Linq" targetFramework="net40" />
+    </frameworkAssemblies>
+  </metadata>
+
+  <files>
+    <file src="..\bin\EFConcurrencyModeTest.dll" target="lib\net40" />
+    <file src="..\bin\EFConcurrencyModeTest.pdb" target="lib\net40" />
+    <file src="..\bin\FSharp.Core.dll" target="lib\net40" />
+    <file src="..\lib\FSharpCore\FSharp.Core.optdata" target="lib\net40" />
+    <file src="..\lib\FSharpCore\FSharp.Core.sigdata" target="lib\net40" />
+  </files>
+</package>
