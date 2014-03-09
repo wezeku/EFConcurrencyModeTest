@@ -6,10 +6,10 @@ open System.Runtime.InteropServices
 [<assembly: AssemblyProductAttribute("EFConcurrencyModeTest")>]
 [<assembly: AssemblyCopyrightAttribute("wezeku.com")>]
 [<assembly: AssemblyDescriptionAttribute("Helper class for unit tests of Entity Framework concurrency mode.")>]
-[<assembly: AssemblyVersionAttribute("1.0.0")>]
-[<assembly: AssemblyFileVersionAttribute("1.0.0")>]
+[<assembly: AssemblyVersionAttribute("1.0.1")>]
+[<assembly: AssemblyFileVersionAttribute("1.0.1")>]
 [<assembly: ComVisibleAttribute(false)>]
 do ()
 
 module internal AssemblyVersionInformation =
-    let [<Literal>] Version = "1.0.0"
+    let [<Literal>] Version = "1.0.1"
