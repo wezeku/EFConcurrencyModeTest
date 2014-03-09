@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ConcurrencyModeTester - EFConcurrencyModeTest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="John Reynolds">
+
+    <script src="http://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="/EFConcurrencyModeTest/content/style.css" />
+    <script type="text/javascript" src="/EFConcurrencyModeTest/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          
+          <li><a href="http://github.com/wezeku/EFConcurrencyModeTest">github page</a></li>
+        </ul>
+        <h3 class="muted"><a href="/EFConcurrencyModeTest/index.html">EFConcurrencyModeTest</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>ConcurrencyModeTester</h1>
+<div class="xmldoc">
+<p>Class used to test ConcurrencyMode settings in EDMX files.</p>
+</div>
+  <h3>Record Fields</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Record Field</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)">
+            RowVersionTypes@
+          </code>
+          <div class="tip" id="1">
+            <strong>Signature:</strong>string []<br />
+              <strong>Modifiers:</strong> mutable<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+        <p>Names of the types used by the database for row versioning.
+The default value is [|"timestamp"; "rowversion"|].</p>
+
+            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L21-21" class="github-link">Go to GitHub source</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Constructors</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Constructor</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)">
+            new(arg1)
+          </code>
+          <div class="tip" id="4">
+            <strong>Signature:</strong>unit -&gt; ConcurrencyModeTester<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+        
+            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L18-18" class="github-link">Go to GitHub source</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Instance members</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Instance member</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '5', 5)" onmouseover="showTip(event, '5', 5)">
+            BadConcurrencyModes(assembly)
+          </code>
+          <div class="tip" id="5">
+            <strong>Signature:</strong>assembly:Assembly -&gt; EntityProperty []<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+        <p>Find bad ConcurrencyMode settings in all EDMX files embedded as resources in an
+assembly (this is how Visual Studio stores EDMX files by default).</p>
+
+<h2>Parameters</h2>
+
+<ul>
+<li><code>assembly</code> - The assembly that contains one or several EDMX files.</li>
+</ul>
+
+<h2>Return Value</h2>
+
+<p>An <code>EntityProperty</code> array with all properties which have a bad ConcurrencyMode
+setting.</p>
+
+            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L87-87" class="github-link">Go to GitHub source</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '6', 6)" onmouseover="showTip(event, '6', 6)">
+            BadConcurrencyModes(assembly, edmxName)
+          </code>
+          <div class="tip" id="6">
+            <strong>Signature:</strong>(assembly:Assembly * edmxName:string) -&gt; EntityProperty []<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+        <p>Find bad ConcurrencyMode settings in a single EDMX file embedded as a resource in an
+assembly (this is how Visual Studio stores EDMX files by default).</p>
+
+<h2>Parameters</h2>
+
+<ul>
+<li><code>assembly</code> - The assembly that contains the EDMX file.</li>
+<li><code>edmxName</code> - The name of the EDMX file without the ".edmx" extension.</li>
+</ul>
+
+<h2>Return Value</h2>
+
+<p>An EntityProperty array with all properties which have a bad ConcurrencyMode
+setting.</p>
+
+            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L72-72" class="github-link">Go to GitHub source</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '7', 7)" onmouseover="showTip(event, '7', 7)">
+            BadConcurrencyModes(...)
+          </code>
+          <div class="tip" id="7">
+            <strong>Signature:</strong>(csdlDocument:XDocument * ssdlDocument:XDocument) -&gt; EntityProperty []<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+        <p>Find bad ConcurrencyMode settings in a CSDL and SSDL document pair.</p>
+
+<h2>Parameters</h2>
+
+<ul>
+<li><code>csdlDocument</code> - CSDL document.</li>
+<li><code>ssdlDocument</code> - SSDL document.</li>
+</ul>
+
+<h2>Return Value</h2>
+
+<p>An EntityProperty array with all properties which have a bad ConcurrencyMode
+setting.</p>
+
+            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L32-32" class="github-link">Go to GitHub source</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '8', 8)" onmouseover="showTip(event, '8', 8)">
+            FormatBadConcurrencyModes(...)
+          </code>
+          <div class="tip" id="8">
+            <strong>Signature:</strong>(entityProperties:EntityProperty []) -&gt; string<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+        <p>Format a string with the results from <code>BadConcurrencyModes(...)</code>. This is useful
+as output for your test runner, e.g. NUnit.</p>
+
+<h2>Parameters</h2>
+
+<ul>
+<li><code>entityProperties</code> - The result from <code>BadConcurrencyModes(...)</code>.</li>
+</ul>
+
+<h2>Return Value</h2>
+
+<p>The formatted string.</p>
+
+            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L103-103" class="github-link">Go to GitHub source</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '9', 9)" onmouseover="showTip(event, '9', 9)">
+            RowVersionTypes(arg1)
+          </code>
+          <div class="tip" id="9">
+            <strong>Signature:</strong>unit -&gt; string []<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+        <p>Names of the types used by the database for row versioning.
+The default value is [|"timestamp"; "rowversion"|].</p>
+
+            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L21-21" class="github-link">Go to GitHub source</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '10', 10)" onmouseover="showTip(event, '10', 10)">
+            RowVersionTypes()
+          </code>
+          <div class="tip" id="10">
+            <strong>Signature:</strong>unit -&gt; string []<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+        <p>Names of the types used by the database for row versioning.
+The default value is [|"timestamp"; "rowversion"|].</p>
+
+            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L21-21" class="github-link">Go to GitHub source</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <img src="/EFConcurrencyModeTest/img/logo.png" alt="F# Project" style="width:150px;margin:10px" />  
+          <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+            <li class="nav-header">EFConcurrencyModeTest</li>
+            <li><a href="/EFConcurrencyModeTest/index.html">Home page</a></li>
+            <li class="divider"></li>
+            <li><a href="http://nuget.com/packages/EFConcurrencyModeTest">Get Library via NuGet</a></li>
+            <li><a href="http://github.com/wezeku/EFConcurrencyModeTest">Source Code on GitHub</a></li>
+            <li><a href="http://github.com/wezeku/EFConcurrencyModeTest/blob/master/LICENSE.txt">License</a></li>
+            <li><a href="http://github.com/wezeku/EFConcurrencyModeTest/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+            
+            
+
+            <li class="nav-header">Documentation</li>
+            <li><a href="/EFConcurrencyModeTest/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/wezeku/EFConcurrencyModeTest"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+  </body>
+  </html>
