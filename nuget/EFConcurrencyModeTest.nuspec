@@ -6,7 +6,7 @@
     <authors>@authors@</authors>
     <owners>@authors@</owners>
     <licenseUrl>http://github.com/wezeku/EFConcurrencyModeTest/blob/master/LICENSE.txt</licenseUrl>
-    <projectUrl>https://github.com/wezeku/EFConcurrencyModeTest</projectUrl>
+    <projectUrl>http://wezeku.github.io/EFConcurrencyModeTest</projectUrl>
     <iconUrl>https://raw.github.com/fsharp/EFConcurrencyModeTest/master/nuget/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>@summary@</summary>
