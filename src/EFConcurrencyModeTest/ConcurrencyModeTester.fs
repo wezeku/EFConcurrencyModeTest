@@ -3,6 +3,7 @@
 open System
 open System.Linq
 open System.Reflection
+open System.Text.RegularExpressions
 open System.Xml.Linq
 
 
@@ -16,9 +17,19 @@ type EntityProperty =
 
 /// Class used to test ConcurrencyMode settings in EDMX files.
 type ConcurrencyModeTester() =
+    // EDMX namespaces.
+    static member EdmxNs = "http://schemas.microsoft.com/ado/2009/11/edmx"
+    static member CsdlNs = "http://schemas.microsoft.com/ado/2009/11/edm"
+    static member SsdlNs = "http://schemas.microsoft.com/ado/2009/11/edm/ssdl"
+
     /// Names of the types used by the database for row versioning.
     /// The default value is [|"timestamp"; "rowversion"|].
     member val RowVersionTypes = [|"timestamp"; "rowversion"|] with set, get
+
+    /// Regex patterns of the column names used for row versioning. Not needed if column
+    /// types like rowverion or timestamp is used.
+    /// The default is empty.
+    member val ConcurrencyColumnNamePatterns = [||] with set, get
 
     /// Find bad ConcurrencyMode settings in a CSDL and SSDL element pair.
     ///
@@ -30,11 +41,8 @@ type ConcurrencyModeTester() =
     /// An EntityProperty array with all properties which have a bad ConcurrencyMode
     /// setting.
     member o.BadConcurrencyModes(csdlElement : XElement, ssdlElement : XElement) =
-        let csdlNs = "http://schemas.microsoft.com/ado/2009/11/edm"
-        let ssdlNs = "http://schemas.microsoft.com/ado/2009/11/edm/ssdl"
-
-        let filterProperties (xDoc : XElement) namespace_ filter = 
-            set [for ent in xDoc.Elements(XName.Get("EntityType", namespace_)) do
+        let filterProperties (xElem : XElement) namespace_ filter = 
+            set [for ent in xElem.Elements(XName.Get("EntityType", namespace_)) do
                     let tableName = ent.Attribute(XName.Get("Name")).Value
                     let props = ent.Elements(XName.Get("Property", namespace_))
                                    .Where(fun p -> filter p)
@@ -44,14 +52,16 @@ type ConcurrencyModeTester() =
         // Make a set of all concurrency checked fields from CSDL.
         let isConcurrent (property : XElement) =
             let cMode = property.Attribute(XName.Get("ConcurrencyMode"))
-            cMode <> null && cMode.Value <> "None"
-        let csdlConcurrentFields = filterProperties csdlElement csdlNs isConcurrent
+            cMode <> null && cMode.Value = "Fixed"
+        let csdlConcurrentFields = filterProperties csdlElement ConcurrencyModeTester.CsdlNs isConcurrent
     
         // Make a set of all ROWVERSION fields from SSDL.
         let isRowVersion (property : XElement) =
             let propType = property.Attribute(XName.Get("Type")).Value
+            let propName = property.Attribute(XName.Get("Name")).Value
             o.RowVersionTypes |> Array.exists ((=) propType)
-        let ssdlRowVersionedFields = filterProperties ssdlElement ssdlNs isRowVersion
+            || o.ConcurrencyColumnNamePatterns |> Array.exists (fun i -> Regex.IsMatch(propName, i))
+        let ssdlRowVersionedFields = filterProperties ssdlElement ConcurrencyModeTester.SsdlNs isRowVersion
 
         ssdlRowVersionedFields - csdlConcurrentFields
         |> Seq.map (fun (e, p) -> { Entity = e; Property = p })

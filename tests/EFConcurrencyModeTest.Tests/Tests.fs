@@ -18,6 +18,7 @@ let private csdl = """
           <PropertyRef Name="ID" />
         </Key>
         <Property Name="ID" Type="Int64" Nullable="false" />
+        <Property Name="VerNo" Type="Int" Nullable="false" />
         <Property Name="RowVer" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
       </EntityType>
       <EntityType Name="TableB">
@@ -25,6 +26,7 @@ let private csdl = """
           <PropertyRef Name="ID" />
         </Key>
         <Property Name="ID" Type="Int64" Nullable="false" />
+        <Property Name="VerNo" Type="Int" Nullable="false" ConcurrencyMode="Fixed" />
         <Property Name="RowVer" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
       </EntityType>
       <EntityType Name="TableC">
@@ -53,6 +55,7 @@ let ssdl = """
           <PropertyRef Name="ID" />
         </Key>
         <Property Name="ID" Type="bigint" Nullable="false" />
+        <Property Name="VerNo" Type="int" Nullable="false" />
         <Property Name="RowVer" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
       </EntityType>
       <EntityType Name="TableB">
@@ -60,6 +63,7 @@ let ssdl = """
           <PropertyRef Name="ID" />
         </Key>
         <Property Name="ID" Type="bigint" Nullable="false" />
+        <Property Name="VerNo" Type="int" Nullable="false" />
         <Property Name="RowVer" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
       </EntityType>
       <EntityType Name="TableC">
@@ -84,9 +88,11 @@ type TestTest() =
     [<Test>]
     static member ``Test of the ConcurrencyMode tester`` () =
         let cmt = ConcurrencyModeTester()
+        cmt.ConcurrencyColumnNamePatterns <- [| "VerNo" |]
         let result = cmt.BadConcurrencyModes(XDocument.Parse csdl, XDocument.Parse ssdl)
         let expected =
             [ { Entity = "TableA"; Property = "RowVer" }
+              { Entity = "TableA"; Property = "VerNo" }
               { Entity = "TableC"; Property = "RowVer" }
             ]
         CollectionAssert.AreEquivalent(expected, result)
