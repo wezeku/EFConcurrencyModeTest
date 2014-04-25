@@ -20,21 +20,21 @@ type ConcurrencyModeTester() =
     /// The default value is [|"timestamp"; "rowversion"|].
     member val RowVersionTypes = [|"timestamp"; "rowversion"|] with set, get
 
-    /// Find bad ConcurrencyMode settings in a CSDL and SSDL document pair.
+    /// Find bad ConcurrencyMode settings in a CSDL and SSDL element pair.
     ///
     /// ## Parameters
-    ///  - `csdlDocument` - CSDL document.
-    ///  - `ssdlDocument` - SSDL document.
+    ///  - `csdlElement` - CSDL element.
+    ///  - `ssdlElement` - SSDL element.
     ///
     /// ## Return Value
     /// An EntityProperty array with all properties which have a bad ConcurrencyMode
     /// setting.
-    member o.BadConcurrencyModes(csdlDocument : XDocument, ssdlDocument : XDocument) =
+    member o.BadConcurrencyModes(csdlElement : XElement, ssdlElement : XElement) =
         let csdlNs = "http://schemas.microsoft.com/ado/2009/11/edm"
         let ssdlNs = "http://schemas.microsoft.com/ado/2009/11/edm/ssdl"
 
-        let filterProperties (xDoc : XDocument) namespace_ filter = 
-            set [for ent in xDoc.Root.Elements(XName.Get("EntityType", namespace_)) do
+        let filterProperties (xDoc : XElement) namespace_ filter = 
+            set [for ent in xDoc.Elements(XName.Get("EntityType", namespace_)) do
                     let tableName = ent.Attribute(XName.Get("Name")).Value
                     let props = ent.Elements(XName.Get("Property", namespace_))
                                    .Where(fun p -> filter p)
@@ -45,18 +45,30 @@ type ConcurrencyModeTester() =
         let isConcurrent (property : XElement) =
             let cMode = property.Attribute(XName.Get("ConcurrencyMode"))
             cMode <> null && cMode.Value <> "None"
-        let csdlConcurrentFields = filterProperties csdlDocument csdlNs isConcurrent
+        let csdlConcurrentFields = filterProperties csdlElement csdlNs isConcurrent
     
         // Make a set of all ROWVERSION fields from SSDL.
         let isRowVersion (property : XElement) =
             let propType = property.Attribute(XName.Get("Type")).Value
             o.RowVersionTypes |> Array.exists ((=) propType)
-
-        let ssdlRowVersionedFields = filterProperties ssdlDocument ssdlNs isRowVersion
+        let ssdlRowVersionedFields = filterProperties ssdlElement ssdlNs isRowVersion
 
         ssdlRowVersionedFields - csdlConcurrentFields
         |> Seq.map (fun (e, p) -> { Entity = e; Property = p })
         |> Seq.toArray
+
+
+    /// Find bad ConcurrencyMode settings in a CSDL and SSDL document pair.
+    ///
+    /// ## Parameters
+    ///  - `csdlDocument` - CSDL document.
+    ///  - `ssdlDocument` - SSDL document.
+    ///
+    /// ## Return Value
+    /// An EntityProperty array with all properties which have a bad ConcurrencyMode
+    /// setting.
+    member o.BadConcurrencyModes(csdlDocument : XDocument, ssdlDocument : XDocument) =
+        o.BadConcurrencyModes(csdlDocument.Root, ssdlDocument.Root)
 
 
     /// Find bad ConcurrencyMode settings in a single EDMX file embedded as a resource in an
@@ -70,8 +82,8 @@ type ConcurrencyModeTester() =
     /// An EntityProperty array with all properties which have a bad ConcurrencyMode
     /// setting.
     member o.BadConcurrencyModes(assembly : Assembly, edmxName : string) =
-        let csdl = o.GetXDocument(assembly, edmxName + ".csdl")
-        let ssdl = o.GetXDocument(assembly, edmxName + ".ssdl")
+        let csdl = o.GetXDocument(assembly, edmxName + ".csdl").Root
+        let ssdl = o.GetXDocument(assembly, edmxName + ".ssdl").Root
         o.BadConcurrencyModes(csdl, ssdl)
 
 
@@ -107,7 +119,7 @@ type ConcurrencyModeTester() =
         sb.ToString()
 
 
-    member private __.GetXDocument(assembly : Assembly, resourceName : string) =
+    member private __.GetXDocument(assembly : Assembly, resourceName : string) : XDocument =
         use stream = assembly.GetManifestResourceStream(resourceName)
         use reader = new IO.StreamReader(stream)
         let xmlText = reader.ReadToEnd()
