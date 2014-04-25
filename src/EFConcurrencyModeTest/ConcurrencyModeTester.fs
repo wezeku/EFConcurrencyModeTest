@@ -27,7 +27,7 @@ type ConcurrencyModeTester() =
     member val RowVersionTypes = [|"timestamp"; "rowversion"|] with set, get
 
     /// Regex patterns of the column names used for row versioning. Not needed if column
-    /// types like rowverion or timestamp is used.
+    /// types like rowversion or timestamp are used.
     /// The default is empty.
     member val ConcurrencyColumnNamePatterns = [||] with set, get
 

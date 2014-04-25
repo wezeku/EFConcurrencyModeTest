@@ -6,3 +6,6 @@
 
 #### 1.0.2 - March 2014
 * Fixed NuGet logo URL.
+
+#### 1.0.3 - April 2014
+* Added ConcurrencyColumnNamePatterns, for concurrency check by convention.
