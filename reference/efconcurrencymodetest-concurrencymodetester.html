@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <title>ConcurrencyModeTester - EFConcurrencyModeTest</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="John Reynolds">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="John Reynolds"/>
 
     <script src="http://code.jquery.com/jquery-1.8.0.js"></script>
     <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
@@ -39,51 +39,6 @@
 <div class="xmldoc">
 <p>Class used to test ConcurrencyMode settings in EDMX files.</p>
 </div>
-  <h3>Record Fields</h3>
-  <table class="table table-bordered member-list">
-    <thead>
-      <tr><td>Record Field</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="member-name">
-
-          <code onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)">
-            ConcurrencyColumnNamePatterns@
-          </code>
-          <div class="tip" id="2">
-            <strong>Signature:</strong>string []<br />
-              <strong>Modifiers:</strong> mutable<br />
-                      </div>
-        </td>
-        <td class="xmldoc">
-        <p>Regex patterns of the column names used for row versioning. Not needed if column
-types like rowverion or timestamp is used.
-The default is empty.</p>
-
-            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L32-32" class="github-link">Go to GitHub source</a>
-        </td>
-      </tr>
-      <tr>
-        <td class="member-name">
-
-          <code onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)">
-            RowVersionTypes@
-          </code>
-          <div class="tip" id="4">
-            <strong>Signature:</strong>string []<br />
-              <strong>Modifiers:</strong> mutable<br />
-                      </div>
-        </td>
-        <td class="xmldoc">
-        <p>Names of the types used by the database for row versioning.
-The default value is [|"timestamp"; "rowversion"|].</p>
-
-            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L27-27" class="github-link">Go to GitHub source</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
   <h3>Constructors</h3>
   <table class="table table-bordered member-list">
     <thead>
@@ -93,11 +48,11 @@ The default value is [|"timestamp"; "rowversion"|].</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '5', 5)" onmouseover="showTip(event, '5', 5)">
-            new(arg1)
+          <code onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)">
+            new()
           </code>
-          <div class="tip" id="5">
-            <strong>Signature:</strong>unit -&gt; ConcurrencyModeTester<br />
+          <div class="tip" id="3">
+            <strong>Signature:</strong> unit -&gt; ConcurrencyModeTester<br />
                       </div>
         </td>
         <td class="xmldoc">
@@ -116,11 +71,11 @@ The default value is [|"timestamp"; "rowversion"|].</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '6', 6)" onmouseover="showTip(event, '6', 6)">
+          <code onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)">
             BadConcurrencyModes(assembly)
           </code>
-          <div class="tip" id="6">
-            <strong>Signature:</strong>assembly:Assembly -&gt; EntityProperty []<br />
+          <div class="tip" id="4">
+            <strong>Signature:</strong> assembly:Assembly -&gt; EntityProperty []<br />
                       </div>
         </td>
         <td class="xmldoc">
@@ -144,11 +99,11 @@ setting.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '7', 7)" onmouseover="showTip(event, '7', 7)">
+          <code onmouseout="hideTip(event, '5', 5)" onmouseover="showTip(event, '5', 5)">
             BadConcurrencyModes(assembly, edmxName)
           </code>
-          <div class="tip" id="7">
-            <strong>Signature:</strong>(assembly:Assembly * edmxName:string) -&gt; EntityProperty []<br />
+          <div class="tip" id="5">
+            <strong>Signature:</strong> (assembly:Assembly * edmxName:string) -&gt; EntityProperty []<br />
                       </div>
         </td>
         <td class="xmldoc">
@@ -173,11 +128,11 @@ setting.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '8', 8)" onmouseover="showTip(event, '8', 8)">
+          <code onmouseout="hideTip(event, '6', 6)" onmouseover="showTip(event, '6', 6)">
             BadConcurrencyModes(...)
           </code>
-          <div class="tip" id="8">
-            <strong>Signature:</strong>(csdlDocument:XDocument * ssdlDocument:XDocument) -&gt; EntityProperty []<br />
+          <div class="tip" id="6">
+            <strong>Signature:</strong> (csdlDocument:XDocument * ssdlDocument:XDocument) -&gt; EntityProperty []<br />
                       </div>
         </td>
         <td class="xmldoc">
@@ -201,11 +156,11 @@ setting.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '9', 9)" onmouseover="showTip(event, '9', 9)">
+          <code onmouseout="hideTip(event, '7', 7)" onmouseover="showTip(event, '7', 7)">
             BadConcurrencyModes(...)
           </code>
-          <div class="tip" id="9">
-            <strong>Signature:</strong>(csdlElement:XElement * ssdlElement:XElement) -&gt; EntityProperty []<br />
+          <div class="tip" id="7">
+            <strong>Signature:</strong> (csdlElement:XElement * ssdlElement:XElement) -&gt; EntityProperty []<br />
                       </div>
         </td>
         <td class="xmldoc">
@@ -229,16 +184,16 @@ setting.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '10', 10)" onmouseover="showTip(event, '10', 10)">
-            ConcurrencyColumnNamePatterns(arg1)
+          <code onmouseout="hideTip(event, '8', 8)" onmouseover="showTip(event, '8', 8)">
+            ConcurrencyColumnNamePatterns
           </code>
-          <div class="tip" id="10">
-            <strong>Signature:</strong>unit -&gt; string []<br />
+          <div class="tip" id="8">
+            <strong>Signature:</strong> string []<br />
                       </div>
         </td>
         <td class="xmldoc">
         <p>Regex patterns of the column names used for row versioning. Not needed if column
-types like rowverion or timestamp is used.
+types like rowversion or timestamp are used.
 The default is empty.</p>
 
             <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L32-32" class="github-link">Go to GitHub source</a>
@@ -247,16 +202,16 @@ The default is empty.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '11', 11)" onmouseover="showTip(event, '11', 11)">
+          <code onmouseout="hideTip(event, '9', 9)" onmouseover="showTip(event, '9', 9)">
             ConcurrencyColumnNamePatterns()
           </code>
-          <div class="tip" id="11">
-            <strong>Signature:</strong>unit -&gt; string []<br />
+          <div class="tip" id="9">
+            <strong>Signature:</strong> unit -&gt; string []<br />
                       </div>
         </td>
         <td class="xmldoc">
         <p>Regex patterns of the column names used for row versioning. Not needed if column
-types like rowverion or timestamp is used.
+types like rowversion or timestamp are used.
 The default is empty.</p>
 
             <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L32-32" class="github-link">Go to GitHub source</a>
@@ -265,11 +220,11 @@ The default is empty.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '12', 12)" onmouseover="showTip(event, '12', 12)">
+          <code onmouseout="hideTip(event, '10', 10)" onmouseover="showTip(event, '10', 10)">
             FormatBadConcurrencyModes(...)
           </code>
-          <div class="tip" id="12">
-            <strong>Signature:</strong>(entityProperties:EntityProperty []) -&gt; string<br />
+          <div class="tip" id="10">
+            <strong>Signature:</strong> (entityProperties:EntityProperty []) -&gt; string<br />
                       </div>
         </td>
         <td class="xmldoc">
@@ -292,11 +247,11 @@ as output for your test runner, e.g. NUnit.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '13', 13)" onmouseover="showTip(event, '13', 13)">
-            RowVersionTypes(arg1)
+          <code onmouseout="hideTip(event, '11', 11)" onmouseover="showTip(event, '11', 11)">
+            RowVersionTypes
           </code>
-          <div class="tip" id="13">
-            <strong>Signature:</strong>unit -&gt; string []<br />
+          <div class="tip" id="11">
+            <strong>Signature:</strong> string []<br />
                       </div>
         </td>
         <td class="xmldoc">
@@ -309,11 +264,11 @@ The default value is [|"timestamp"; "rowversion"|].</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '14', 14)" onmouseover="showTip(event, '14', 14)">
+          <code onmouseout="hideTip(event, '12', 12)" onmouseover="showTip(event, '12', 12)">
             RowVersionTypes()
           </code>
-          <div class="tip" id="14">
-            <strong>Signature:</strong>unit -&gt; string []<br />
+          <div class="tip" id="12">
+            <strong>Signature:</strong> unit -&gt; string []<br />
                       </div>
         </td>
         <td class="xmldoc">
@@ -334,11 +289,11 @@ The default value is [|"timestamp"; "rowversion"|].</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '15', 15)" onmouseover="showTip(event, '15', 15)">
-            CsdlNs(arg1)
+          <code onmouseout="hideTip(event, '13', 13)" onmouseover="showTip(event, '13', 13)">
+            CsdlNs
           </code>
-          <div class="tip" id="15">
-            <strong>Signature:</strong>unit -&gt; string<br />
+          <div class="tip" id="13">
+            <strong>Signature:</strong> string<br />
                       </div>
         </td>
         <td class="xmldoc">
@@ -349,11 +304,11 @@ The default value is [|"timestamp"; "rowversion"|].</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '16', 16)" onmouseover="showTip(event, '16', 16)">
-            EdmxNs(arg1)
+          <code onmouseout="hideTip(event, '14', 14)" onmouseover="showTip(event, '14', 14)">
+            EdmxNs
           </code>
-          <div class="tip" id="16">
-            <strong>Signature:</strong>unit -&gt; string<br />
+          <div class="tip" id="14">
+            <strong>Signature:</strong> string<br />
                       </div>
         </td>
         <td class="xmldoc">
@@ -364,11 +319,11 @@ The default value is [|"timestamp"; "rowversion"|].</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '17', 17)" onmouseover="showTip(event, '17', 17)">
-            SsdlNs(arg1)
+          <code onmouseout="hideTip(event, '15', 15)" onmouseover="showTip(event, '15', 15)">
+            SsdlNs
           </code>
-          <div class="tip" id="17">
-            <strong>Signature:</strong>unit -&gt; string<br />
+          <div class="tip" id="15">
+            <strong>Signature:</strong> string<br />
                       </div>
         </td>
         <td class="xmldoc">
@@ -399,6 +354,6 @@ The default value is [|"timestamp"; "rowversion"|].</p>
         </div>
       </div>
     </div>
-    <a href="http://github.com/wezeku/EFConcurrencyModeTest"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    <a href="http://github.com/wezeku/EFConcurrencyModeTest"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/></a>
   </body>
   </html>
