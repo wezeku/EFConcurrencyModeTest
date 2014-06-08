@@ -14,7 +14,7 @@ let githubLink = "http://github.com/wezeku/EFConcurrencyModeTest"
 let info =
   [ "project-name", "EFConcurrencyModeTest"
     "project-author", "John Reynolds"
-    "project-summary", "A short summary of your project"
+    "project-summary", "Unit test helper for Entity Framework concurrency fields"
     "project-github", githubLink
     "project-nuget", "http://nuget.org/packages/EFConcurrencyModeTest" ]
 
