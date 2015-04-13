@@ -72,9 +72,36 @@
         <td class="member-name">
 
           <code onmouseout="hideTip(event, '6', 6)" onmouseover="showTip(event, '6', 6)">
-            BadConcurrencyModes(assembly)
+            BadConcurrencyModes(edmxFilePath)
           </code>
           <div class="tip" id="6">
+            <strong>Signature:</strong> edmxFilePath:string -&gt; EntityProperty []<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+        <p>Find bad ConcurrencyMode settings in an EDMX file.</p>
+
+<h2>Parameters</h2>
+
+<ul>
+<li><code>edmxFilePath</code> - The EDMX file to be read, e.g. "c:\foo.edmx".</li>
+</ul>
+
+<h2>Return Value</h2>
+
+<p>An <code>EntityProperty</code> array with all properties which have a bad ConcurrencyMode
+setting.</p>
+
+            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L186-186" class="github-link">Go to GitHub source</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '7', 7)" onmouseover="showTip(event, '7', 7)">
+            BadConcurrencyModes(assembly)
+          </code>
+          <div class="tip" id="7">
             <strong>Signature:</strong> assembly:Assembly -&gt; EntityProperty []<br />
                       </div>
         </td>
@@ -99,10 +126,10 @@ setting.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '7', 7)" onmouseover="showTip(event, '7', 7)">
+          <code onmouseout="hideTip(event, '8', 8)" onmouseover="showTip(event, '8', 8)">
             BadConcurrencyModes(assembly, edmxName)
           </code>
-          <div class="tip" id="7">
+          <div class="tip" id="8">
             <strong>Signature:</strong> (assembly:Assembly * edmxName:string) -&gt; EntityProperty []<br />
                       </div>
         </td>
@@ -128,10 +155,10 @@ setting.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '8', 8)" onmouseover="showTip(event, '8', 8)">
+          <code onmouseout="hideTip(event, '9', 9)" onmouseover="showTip(event, '9', 9)">
             BadConcurrencyModes(...)
           </code>
-          <div class="tip" id="8">
+          <div class="tip" id="9">
             <strong>Signature:</strong> (csdlDocument:XDocument * ssdlDocument:XDocument * mslDocument:XDocument) -&gt; EntityProperty []<br />
                       </div>
         </td>
@@ -157,10 +184,10 @@ setting.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '9', 9)" onmouseover="showTip(event, '9', 9)">
+          <code onmouseout="hideTip(event, '10', 10)" onmouseover="showTip(event, '10', 10)">
             BadConcurrencyModes(...)
           </code>
-          <div class="tip" id="9">
+          <div class="tip" id="10">
             <strong>Signature:</strong> (csdlElement:XElement * ssdlElement:XElement * mslElement:XElement) -&gt; EntityProperty []<br />
                       </div>
         </td>
@@ -186,10 +213,10 @@ setting.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '10', 10)" onmouseover="showTip(event, '10', 10)">
+          <code onmouseout="hideTip(event, '11', 11)" onmouseover="showTip(event, '11', 11)">
             ConcurrencyColumnNamePatterns
           </code>
-          <div class="tip" id="10">
+          <div class="tip" id="11">
             <strong>Signature:</strong> string []<br />
                       </div>
         </td>
@@ -204,10 +231,10 @@ The default is empty.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '11', 11)" onmouseover="showTip(event, '11', 11)">
+          <code onmouseout="hideTip(event, '12', 12)" onmouseover="showTip(event, '12', 12)">
             ConcurrencyColumnNamePatterns()
           </code>
-          <div class="tip" id="11">
+          <div class="tip" id="12">
             <strong>Signature:</strong> unit -&gt; string []<br />
                       </div>
         </td>
@@ -222,10 +249,10 @@ The default is empty.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '12', 12)" onmouseover="showTip(event, '12', 12)">
+          <code onmouseout="hideTip(event, '13', 13)" onmouseover="showTip(event, '13', 13)">
             FormatBadConcurrencyModes(...)
           </code>
-          <div class="tip" id="12">
+          <div class="tip" id="13">
             <strong>Signature:</strong> (entityProperties:EntityProperty []) -&gt; string<br />
                       </div>
         </td>
@@ -243,16 +270,16 @@ as output for your test runner, e.g. NUnit.</p>
 
 <p>The formatted string.</p>
 
-            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L186-186" class="github-link">Go to GitHub source</a>
+            <a href="http://github.com/wezeku/EFConcurrencyModeTest/tree/master/src/EFConcurrencyModeTest/ConcurrencyModeTester.fs#L208-208" class="github-link">Go to GitHub source</a>
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '13', 13)" onmouseover="showTip(event, '13', 13)">
+          <code onmouseout="hideTip(event, '14', 14)" onmouseover="showTip(event, '14', 14)">
             RowVersionTypes
           </code>
-          <div class="tip" id="13">
+          <div class="tip" id="14">
             <strong>Signature:</strong> string []<br />
                       </div>
         </td>
@@ -266,10 +293,10 @@ The default value is [|"timestamp"; "rowversion"|].</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '14', 14)" onmouseover="showTip(event, '14', 14)">
+          <code onmouseout="hideTip(event, '15', 15)" onmouseover="showTip(event, '15', 15)">
             RowVersionTypes()
           </code>
-          <div class="tip" id="14">
+          <div class="tip" id="15">
             <strong>Signature:</strong> unit -&gt; string []<br />
                       </div>
         </td>
@@ -291,10 +318,10 @@ The default value is [|"timestamp"; "rowversion"|].</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '15', 15)" onmouseover="showTip(event, '15', 15)">
+          <code onmouseout="hideTip(event, '16', 16)" onmouseover="showTip(event, '16', 16)">
             CsdlNs
           </code>
-          <div class="tip" id="15">
+          <div class="tip" id="16">
             <strong>Signature:</strong> string<br />
                       </div>
         </td>
@@ -306,10 +333,10 @@ The default value is [|"timestamp"; "rowversion"|].</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '16', 16)" onmouseover="showTip(event, '16', 16)">
+          <code onmouseout="hideTip(event, '17', 17)" onmouseover="showTip(event, '17', 17)">
             EdmxNs
           </code>
-          <div class="tip" id="16">
+          <div class="tip" id="17">
             <strong>Signature:</strong> string<br />
                       </div>
         </td>
@@ -321,10 +348,10 @@ The default value is [|"timestamp"; "rowversion"|].</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '17', 17)" onmouseover="showTip(event, '17', 17)">
+          <code onmouseout="hideTip(event, '18', 18)" onmouseover="showTip(event, '18', 18)">
             MslNs
           </code>
-          <div class="tip" id="17">
+          <div class="tip" id="18">
             <strong>Signature:</strong> string<br />
                       </div>
         </td>
@@ -336,10 +363,10 @@ The default value is [|"timestamp"; "rowversion"|].</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '18', 18)" onmouseover="showTip(event, '18', 18)">
+          <code onmouseout="hideTip(event, '19', 19)" onmouseover="showTip(event, '19', 19)">
             SsdlNs
           </code>
-          <div class="tip" id="18">
+          <div class="tip" id="19">
             <strong>Signature:</strong> string<br />
                       </div>
         </td>
