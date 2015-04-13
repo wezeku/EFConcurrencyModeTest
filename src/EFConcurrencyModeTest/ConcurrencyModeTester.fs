@@ -175,6 +175,28 @@ type ConcurrencyModeTester() =
         [|for i in resNames do yield! o.BadConcurrencyModes(assembly, i)|]
 
 
+    /// Find bad ConcurrencyMode settings in an EDMX file.
+    ///
+    /// ## Parameters
+    ///  - `edmxFilePath` - The EDMX file to be read, e.g. "c:\foo.edmx".
+    ///
+    /// ## Return Value
+    /// An `EntityProperty` array with all properties which have a bad ConcurrencyMode
+    /// setting.
+    member o.BadConcurrencyModes(edmxFilePath : string) =
+        let xdoc = XDocument.Load edmxFilePath
+
+        let runtimeElement = xdoc.Root.Element(XName.Get("Runtime", ConcurrencyModeTester.EdmxNs))
+        let conceptualModelsElement = runtimeElement.Element(XName.Get("ConceptualModels", ConcurrencyModeTester.EdmxNs))
+        let storageModelsElement = runtimeElement.Element(XName.Get("StorageModels", ConcurrencyModeTester.EdmxNs))
+        let mappingsElement = runtimeElement.Element(XName.Get("Mappings", ConcurrencyModeTester.EdmxNs))
+
+        let csdl = conceptualModelsElement.Element(XName.Get("Schema", ConcurrencyModeTester.CsdlNs))
+        let ssdl = storageModelsElement.Element(XName.Get("Schema", ConcurrencyModeTester.SsdlNs))
+        let msl = mappingsElement.Element(XName.Get("Mapping", ConcurrencyModeTester.MslNs))
+        o.BadConcurrencyModes(csdl, ssdl, msl)
+
+
     /// Format a string with the results from `BadConcurrencyModes(...)`. This is useful
     /// as output for your test runner, e.g. NUnit.
     ///

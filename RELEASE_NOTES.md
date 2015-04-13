@@ -12,3 +12,6 @@
 
 #### 2.0.0 - April 2015
 * Now uses the <edmx:Mappings> section of the edmx file, to map storage to conceptual properties.
+
+#### 2.0.1 - April 2015
+* Added BadConcurrencyModes overload that reads EDMX files.
