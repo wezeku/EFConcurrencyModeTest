@@ -9,3 +9,6 @@
 
 #### 1.0.3 - April 2014
 * Added ConcurrencyColumnNamePatterns, for concurrency check by convention.
+
+#### 2.0.0 - April 2015
+* Now uses the <edmx:Mappings> section of the edmx file, to map storage to conceptual properties.
