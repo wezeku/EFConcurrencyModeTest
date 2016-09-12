@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>EFConcurrencyModeTest
+</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Unit test helper for Entity Framework concurrency fields"/>
+    <meta name="author" content="John Reynolds"/>
+
+    <script src="http://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="/EFConcurrencyModeTest/content/style.css" />
+    <script type="text/javascript" src="/EFConcurrencyModeTest/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          
+          <li><a href="http://github.com/wezeku/EFConcurrencyModeTest">github page</a></li>
+        </ul>
+        <h3 class="muted"><a href="/EFConcurrencyModeTest/index.html">EFConcurrencyModeTest</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+<h1>EFConcurrencyModeTest</h1>
+
+<p>EFConcurrencyModeTest helps you write unit tests (for e.g. NUnit) that test
+whether optimistic concurrency for Entity Framework is enabled in your EDMX
+files.</p>
+
+<p>When using Entity Framework, the ConcurrencyMode attribute for properties 
+mapped to rowversion (a.k.a. timestamp) database columns, should be set to 
+ConcurrencyMode.Fixed, to enable optimistic concurrency.</p>
+
+<p>Unfortunately, due to <a href="https://entityframework.codeplex.com/workitem/588">a bug in the Entity Framework tools</a>,
+you have to do this manually. EFConcurrencyModeTest helps you write the tests
+needed to make sure that you have done so.</p>
+
+<div class="row">
+  <div class="span1"></div>
+  <div class="span6">
+    <div class="well well-small" id="nuget">
+      EFConcurrencyModeTest can be <a href="https://nuget.org/packages/EFConcurrencyModeTest">installed from NuGet</a>:
+      <pre>PM> Install-Package EFConcurrencyModeTest</pre>
+    </div>
+  </div>
+  <div class="span1"></div>
+</div>
+
+<h2>F# Example</h2>
+
+<p>This example shows how a simple NUnit test using EFConcurrencyModeTest looks in F#:</p>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">EFConcurrencyModeTest</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">NUnit</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">Framework</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="i">System</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs5', 5)" onmouseover="showTip(event, 'fs5', 5)" class="i">Reflection</span>
+
+<span class="k">type</span> <span onmouseout="hideTip(event, 'fs6', 6)" onmouseover="showTip(event, 'fs6', 6)" class="i">TestDbConcurrencyMode</span> () <span class="o">=</span>
+    [&lt;<span onmouseout="hideTip(event, 'fs7', 7)" onmouseover="showTip(event, 'fs7', 7)" class="i">Test</span>&gt;]
+    <span class="k">static</span> <span class="k">member</span> <span onmouseout="hideTip(event, 'fs8', 8)" onmouseover="showTip(event, 'fs8', 8)" class="i">ConcurrencyModes</span> () <span class="o">=</span>
+        <span class="k">let</span> <span onmouseout="hideTip(event, 'fs9', 9)" onmouseover="showTip(event, 'fs9', 9)" class="i">cmt</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs10', 10)" onmouseover="showTip(event, 'fs10', 10)" class="i">ConcurrencyModeTester</span>()
+        <span class="k">let</span> <span onmouseout="hideTip(event, 'fs11', 11)" onmouseover="showTip(event, 'fs11', 11)" class="i">asm</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs12', 12)" onmouseover="showTip(event, 'fs12', 12)" class="i">Assembly</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs13', 13)" onmouseover="showTip(event, 'fs13', 13)" class="i">GetAssembly</span>(<span onmouseout="hideTip(event, 'fs14', 14)" onmouseover="showTip(event, 'fs14', 14)" class="i">typeof</span><span class="o">&lt;</span><span onmouseout="hideTip(event, 'fs15', 15)" onmouseover="showTip(event, 'fs15', 15)" class="i">MyDatabaseEntitiesType</span><span class="o">&gt;</span>)
+        <span class="k">let</span> <span onmouseout="hideTip(event, 'fs16', 16)" onmouseover="showTip(event, 'fs16', 16)" class="i">result</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs9', 17)" onmouseover="showTip(event, 'fs9', 17)" class="i">cmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs17', 18)" onmouseover="showTip(event, 'fs17', 18)" class="i">BadConcurrencyModes</span>(<span onmouseout="hideTip(event, 'fs11', 19)" onmouseover="showTip(event, 'fs11', 19)" class="i">asm</span>, <span class="s">&quot;</span><span class="s">MyEdmxFileNameWithoutExtension</span><span class="s">&quot;</span>)
+        <span onmouseout="hideTip(event, 'fs18', 20)" onmouseover="showTip(event, 'fs18', 20)" class="i">Assert</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs19', 21)" onmouseover="showTip(event, 'fs19', 21)" class="i">IsEmpty</span>(<span onmouseout="hideTip(event, 'fs16', 22)" onmouseover="showTip(event, 'fs16', 22)" class="i">result</span>, <span onmouseout="hideTip(event, 'fs9', 23)" onmouseover="showTip(event, 'fs9', 23)" class="i">cmt</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs20', 24)" onmouseover="showTip(event, 'fs20', 24)" class="i">FormatBadConcurrencyModes</span> <span onmouseout="hideTip(event, 'fs16', 25)" onmouseover="showTip(event, 'fs16', 25)" class="i">result</span>)</pre>
+</td>
+</tr>
+</table>
+
+<h2>C# Example</h2>
+
+<p>This example shows the same NUnit test in C#:</p>
+
+<pre lang="csharp"><span class="k">using</span> EFConcurrencyModeTest;
+<span class="k">using</span> NUnit.Framework;
+<span class="k">using</span> System.Reflection;
+
+<span class="k">public</span> <span class="k">class</span> TestDbConcurrencyMode
+{
+    [Test]
+    <span class="k">static</span> <span class="k">void</span> ConcurrencyModes()
+    {
+        <span class="k">var</span> cmt = <span class="k">new</span> ConcurrencyModeTester();
+        <span class="k">var</span> asm = Assembly.GetAssembly(<span class="k">typeof</span>(MyDatabaseEntitiesType));
+        <span class="k">var</span> result = cmt.BadConcurrencyModes(asm, <span class="s">"MyEdmxFileNameWithoutExtension"</span>);
+        Assert.IsEmpty(result, cmt.FormatBadConcurrencyModes(result));
+    }
+}</pre>
+
+<h2>Documentation</h2>
+
+<p>The above examples show just about all you have to know about the usage of EFConcurrencyModeTest.
+There are a few additional variants of the BadConcurrencyModes function which are documented in 
+the <a href="reference/index.html">API Reference</a>.</p>
+
+<h2>Fixing faulty concurrency modes</h2>
+
+<p>Bad concurrency modes can be fixed automatically by the 
+<a href="https://github.com/wezeku/FixEFConcurrencyModes">FixEFConcurrencyModes</a> utility. See 
+<a href="http://blog.wezeku.com/2014/04/28/fixefconcurrencymodes/">this blog post</a> for usage examples.</p>
+
+<h2>Copyright</h2>
+
+<p>The library is available under Public Domain license, which allows modification and 
+redistribution for both commercial and non-commercial purposes. For more information see the 
+<a href="https://github.com/wezeku/EFConcurrencyModeTest/blob/master/LICENSE.txt">License file</a> in the GitHub repository.</p>
+
+<div class="tip" id="fs1">namespace EFConcurrencyModeTest</div>
+<div class="tip" id="fs2">namespace NUnit</div>
+<div class="tip" id="fs3">namespace NUnit.Framework</div>
+<div class="tip" id="fs4">namespace System</div>
+<div class="tip" id="fs5">namespace System.Reflection</div>
+<div class="tip" id="fs6">Multiple items<br />type TestDbConcurrencyMode =<br />&#160;&#160;new : unit -&gt; TestDbConcurrencyMode<br />&#160;&#160;static member ConcurrencyModes : unit -&gt; unit<br /><br />Full name: Index.TestDbConcurrencyMode<br /><br />--------------------<br />new : unit -&gt; TestDbConcurrencyMode</div>
+<div class="tip" id="fs7">Multiple items<br />type TestAttribute =<br />&#160;&#160;inherit Attribute<br />&#160;&#160;new : unit -&gt; TestAttribute<br />&#160;&#160;member Description : string with get, set<br /><br />Full name: NUnit.Framework.TestAttribute<br /><br />--------------------<br />TestAttribute() : unit</div>
+<div class="tip" id="fs8">static member TestDbConcurrencyMode.ConcurrencyModes : unit -&gt; unit<br /><br />Full name: Index.TestDbConcurrencyMode.ConcurrencyModes</div>
+<div class="tip" id="fs9">val cmt : ConcurrencyModeTester</div>
+<div class="tip" id="fs10">Multiple items<br />type ConcurrencyModeTester =<br />&#160;&#160;new : unit -&gt; ConcurrencyModeTester<br />&#160;&#160;member BadConcurrencyModes : edmxFilePath:string -&gt; EntityProperty []<br />&#160;&#160;member BadConcurrencyModes : assembly:Assembly -&gt; EntityProperty []<br />&#160;&#160;member BadConcurrencyModes : assembly:Assembly * edmxName:string -&gt; EntityProperty []<br />&#160;&#160;member BadConcurrencyModes : csdlDocument:XDocument * ssdlDocument:XDocument * mslDocument:XDocument -&gt; EntityProperty []<br />&#160;&#160;member BadConcurrencyModes : csdlElement:XElement * ssdlElement:XElement * mslElement:XElement -&gt; EntityProperty []<br />&#160;&#160;member FormatBadConcurrencyModes : entityProperties:EntityProperty [] -&gt; string<br />&#160;&#160;member private GetXDocument : assembly:Assembly * resourceName:string -&gt; XDocument<br />&#160;&#160;member ConcurrencyColumnNamePatterns : string []<br />&#160;&#160;member RowVersionTypes : string []<br />&#160;&#160;...<br /><br />Full name: EFConcurrencyModeTest.ConcurrencyModeTester<br /><br />--------------------<br />new : unit -&gt; ConcurrencyModeTester</div>
+<div class="tip" id="fs11">val asm : Assembly</div>
+<div class="tip" id="fs12">type Assembly =<br />&#160;&#160;member CodeBase : string<br />&#160;&#160;member CreateInstance : typeName:string -&gt; obj + 2 overloads<br />&#160;&#160;member EntryPoint : MethodInfo<br />&#160;&#160;member Equals : o:obj -&gt; bool<br />&#160;&#160;member EscapedCodeBase : string<br />&#160;&#160;member Evidence : Evidence<br />&#160;&#160;member FullName : string<br />&#160;&#160;member GetCustomAttributes : inherit:bool -&gt; obj[] + 1 overload<br />&#160;&#160;member GetCustomAttributesData : unit -&gt; IList&lt;CustomAttributeData&gt;<br />&#160;&#160;member GetExportedTypes : unit -&gt; Type[]<br />&#160;&#160;...<br /><br />Full name: System.Reflection.Assembly</div>
+<div class="tip" id="fs13">Assembly.GetAssembly(type: System.Type) : Assembly</div>
+<div class="tip" id="fs14">val typeof&lt;&#39;T&gt; : System.Type<br /><br />Full name: Microsoft.FSharp.Core.Operators.typeof</div>
+<div class="tip" id="fs15">type MyDatabaseEntitiesType = | Dummy<br /><br />Full name: Index.MyDatabaseEntitiesType</div>
+<div class="tip" id="fs16">val result : EntityProperty []</div>
+<div class="tip" id="fs17">member ConcurrencyModeTester.BadConcurrencyModes : edmxFilePath:string -&gt; EntityProperty []<br />member ConcurrencyModeTester.BadConcurrencyModes : assembly:Assembly -&gt; EntityProperty []<br />member ConcurrencyModeTester.BadConcurrencyModes : assembly:Assembly * edmxName:string -&gt; EntityProperty []<br />member ConcurrencyModeTester.BadConcurrencyModes : csdlDocument:System.Xml.Linq.XDocument * ssdlDocument:System.Xml.Linq.XDocument * mslDocument:System.Xml.Linq.XDocument -&gt; EntityProperty []<br />member ConcurrencyModeTester.BadConcurrencyModes : csdlElement:System.Xml.Linq.XElement * ssdlElement:System.Xml.Linq.XElement * mslElement:System.Xml.Linq.XElement -&gt; EntityProperty []</div>
+<div class="tip" id="fs18">type Assert =<br />&#160;&#160;static member AreEqual : expected:int * actual:int -&gt; unit + 23 overloads<br />&#160;&#160;static member AreNotEqual : expected:int * actual:int -&gt; unit + 23 overloads<br />&#160;&#160;static member AreNotSame : expected:obj * actual:obj -&gt; unit + 2 overloads<br />&#160;&#160;static member AreSame : expected:obj * actual:obj -&gt; unit + 2 overloads<br />&#160;&#160;static member ByVal : actual:obj * expression:IResolveConstraint -&gt; unit + 2 overloads<br />&#160;&#160;static member Catch : code:TestDelegate -&gt; Exception + 8 overloads<br />&#160;&#160;static member Contains : expected:obj * actual:ICollection -&gt; unit + 2 overloads<br />&#160;&#160;static member Counter : int<br />&#160;&#160;static member DoesNotThrow : code:TestDelegate -&gt; unit + 2 overloads<br />&#160;&#160;static member Equals : a:obj * b:obj -&gt; bool<br />&#160;&#160;...<br /><br />Full name: NUnit.Framework.Assert</div>
+<div class="tip" id="fs19">Assert.IsEmpty(collection: System.Collections.IEnumerable) : unit<br />Assert.IsEmpty(aString: string) : unit<br />Assert.IsEmpty(collection: System.Collections.IEnumerable, message: string) : unit<br />Assert.IsEmpty(aString: string, message: string) : unit<br />Assert.IsEmpty(collection: System.Collections.IEnumerable, message: string, params args: obj []) : unit<br />Assert.IsEmpty(aString: string, message: string, params args: obj []) : unit</div>
+<div class="tip" id="fs20">member ConcurrencyModeTester.FormatBadConcurrencyModes : entityProperties:EntityProperty [] -&gt; string</div>
+
+        </div>
+        <div class="span3">
+          <img src="/EFConcurrencyModeTest/img/logo.png" alt="F# Project" style="width:150px;margin:10px" />  
+          <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+            <li class="nav-header">EFConcurrencyModeTest</li>
+            <li><a href="/EFConcurrencyModeTest/index.html">Home page</a></li>
+            <li class="divider"></li>
+            <li><a href="http://nuget.org/packages/EFConcurrencyModeTest">Get Library via NuGet</a></li>
+            <li><a href="http://github.com/wezeku/EFConcurrencyModeTest">Source Code on GitHub</a></li>
+            <li><a href="http://github.com/wezeku/EFConcurrencyModeTest/blob/master/LICENSE.txt">License</a></li>
+            <li><a href="http://github.com/wezeku/EFConcurrencyModeTest/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+            
+            
+
+            <li class="nav-header">Documentation</li>
+            <li><a href="/EFConcurrencyModeTest/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/wezeku/EFConcurrencyModeTest"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/></a>
+  </body>
+  </html>
