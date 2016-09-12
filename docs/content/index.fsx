@@ -67,8 +67,15 @@ Documentation
 -------------
 
 The above examples show just about all you have to know about the usage of EFConcurrencyModeTest.
-There are a few variants of the BadConcurrencyModes function which are documented in 
+There are a few additional variants of the BadConcurrencyModes function which are documented in 
 the [API Reference](reference/index.html).
+
+Fixing faulty concurrency modes
+-------------------------------
+
+Bad concurrency modes can be fixed automatically by the 
+[FixEFConcurrencyModes](https://github.com/wezeku/FixEFConcurrencyModes) utility. See 
+[this blog post](http://blog.wezeku.com/2014/04/28/fixefconcurrencymodes/) for usage examples.
 
 Copyright
 ---------
