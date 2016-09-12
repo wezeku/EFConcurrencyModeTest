@@ -1,6 +1,6 @@
 (*** hide ***)
 #I "../../bin"
-#I "../../packages/NUnit.2.6.3/lib"
+#I "../../packages/NUnit.2.6.4/lib"
 
 (**
 EFConcurrencyModeTest
