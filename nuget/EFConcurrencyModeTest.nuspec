@@ -25,8 +25,5 @@
   <files>
     <file src="..\bin\EFConcurrencyModeTest.dll" target="lib\net40" />
     <file src="..\bin\EFConcurrencyModeTest.pdb" target="lib\net40" />
-    <file src="..\bin\FSharp.Core.dll" target="lib\net40" />
-    <file src="..\lib\FSharpCore\FSharp.Core.optdata" target="lib\net40" />
-    <file src="..\lib\FSharpCore\FSharp.Core.sigdata" target="lib\net40" />
   </files>
 </package>

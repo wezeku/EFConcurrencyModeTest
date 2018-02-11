@@ -17,4 +17,7 @@
 * Added BadConcurrencyModes overload that reads EDMX files.
 
 #### 2.0.2 - April 2017
-* Modified to compile with Visual Studio 2017
+* Modified to compile with Visual Studio 2017.
+
+#### 2.0.3 - February 2018
+* Removed irrelevant FSharp.Core from package.
